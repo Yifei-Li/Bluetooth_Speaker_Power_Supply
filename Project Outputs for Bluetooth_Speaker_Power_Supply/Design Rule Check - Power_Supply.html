@@ -1,0 +1,448 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD16\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2016-11-15</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">12:38:06 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc" class="file"><acronym title="D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc">D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">36</td></tr>
+</table>
+</td>
+</table><a name="IDFICDTA52G1AMFBML2KEK5IGBBHN4FCL1GYZTO1KTNU4H313GNCPJ"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0PUVFUL3BIPHHUPXYQWN3Z3WMMUVWYJJD2RQKIRH1OL0SGZUWDM">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID01IGSJIDQ2PKLG1CEQMNIRFTPICMSJ2XTFK1TOBI4MRYRZT5XOS">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMUBZFT3EPDP3P4BOVMLXJF5RQCCR3EVXL1PKEXJZJPT3FLCYNV2D">Clearance Constraint (Gap=0.2mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID551WSG4ZBTG3BUIPHEPRTBQCNBD3Z2ZP2EDTWPCJS5ROQAAEAOLG">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDY1MS02UQRRANJUZBDFASR0J4VERYVS1PEAZLOUIKE5CMVCE5UIYI">Width Constraint (Min=0.127mm) (Max=1mm) (Preferred=0.3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDDSVSWJX5ZVYBI2MOOBO12H0RZF0LKYX4G4GNT1I3CBUPOQH2F53C">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOZJ33NLUFUZPBV4WYQGTTL4RWGED3F5ABK0AL3PFTT4P2OI4OLUI">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQLQOQPMRCNLTB52Q2WHFCECFLD5W2JKHFJCDTEIHJHVWBJYA4KWJ">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBE1NKIXGQFH2EG32JURJNNPUKNCPUTL4ULQ3NK4MBRXWOITXRB">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">20</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPBBAAY4RQ1NBOXTE4VQKMNHOOLQMMFXZQD5TS5PWWLZGHQQ5JCQN">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">16</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYGH3GDQA3WWJIVI3TQMGPEK5UMJIU5IUM1CRVXCOZLABYMZIHYIH">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEQURIZXMTFSJMY0MYPSMWT1X4OLAPTKULWNXMHGRLSZKDSVPXCN">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPSRE3LEXJAVEPURVT3O013TXOEBHNYQ1O14UGZJYMQOQVW11VCHK">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUH4OA5KELXI3PSR1QTAVTPF4FJ3TYZWDUY0OTMGEK0TDITPEDOZK">Clearance Constraint (Gap=0.2mm) (InNamedPolygon('NETU1_8_L01_P026')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGDP3TNMC2TULCJOFUOR3IXVRKO1YDZNTQ01SQ5L35RGJ231S1MSL">Clearance Constraint (Gap=0.2mm) (InNamedPolygon('TOP_GND')   or InNamedPolygon('BOTTOM_GND')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">36</td>
+</tr>
+</table><br><a name="IDBE1NKIXGQFH2EG32JURJNNPUKNCPUTL4ULQ3NK4MBRXWOITXRB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.8mil|Location2.X=3225.05mil|Location1.Y=2534.729mil|Location2.Y=2545.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.8mil|Location2.X=3225.05mil|Location1.Y=2534.729mil|Location2.Y=2545.979mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U4-2(57.375mm,40mm) on Top Layer And Pad U4-1(57.375mm,39.05mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.8mil|Location2.X=3225.05mil|Location1.Y=2572.131mil|Location2.Y=2583.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.8mil|Location2.X=3225.05mil|Location1.Y=2572.131mil|Location2.Y=2583.381mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U4-3(57.375mm,40.95mm) on Top Layer And Pad U4-2(57.375mm,40mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.533mil|Location2.X=3116.783mil|Location1.Y=2572.131mil|Location2.Y=2583.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.533mil|Location2.X=3116.783mil|Location1.Y=2572.131mil|Location2.Y=2583.381mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U4-5(54.625mm,40mm) on Top Layer And Pad U4-4(54.625mm,40.95mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.533mil|Location2.X=3116.783mil|Location1.Y=2534.729mil|Location2.Y=2545.979mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.533mil|Location2.X=3116.783mil|Location1.Y=2534.729mil|Location2.Y=2545.979mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U4-6(54.625mm,39.05mm) on Top Layer And Pad U4-5(54.625mm,40mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.8mil|Location2.X=3225.05mil|Location1.Y=2022.918mil|Location2.Y=2034.168mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.8mil|Location2.X=3225.05mil|Location1.Y=2022.918mil|Location2.Y=2034.168mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U5-2(57.375mm,27mm) on Top Layer And Pad U5-1(57.375mm,26.05mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.8mil|Location2.X=3225.05mil|Location1.Y=2060.32mil|Location2.Y=2071.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3213.8mil|Location2.X=3225.05mil|Location1.Y=2060.32mil|Location2.Y=2071.57mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U5-3(57.375mm,27.95mm) on Top Layer And Pad U5-2(57.375mm,27mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.533mil|Location2.X=3116.783mil|Location1.Y=2060.32mil|Location2.Y=2071.57mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.533mil|Location2.X=3116.783mil|Location1.Y=2060.32mil|Location2.Y=2071.57mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U5-5(54.625mm,27mm) on Top Layer And Pad U5-4(54.625mm,27.95mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.533mil|Location2.X=3116.783mil|Location1.Y=2022.918mil|Location2.Y=2034.168mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3105.533mil|Location2.X=3116.783mil|Location1.Y=2022.918mil|Location2.Y=2034.168mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U5-6(54.625mm,26.05mm) on Top Layer And Pad U5-5(54.625mm,27mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1688.273mil|Location2.X=1699.523mil|Location1.Y=2613.407mil|Location2.Y=2624.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1688.273mil|Location2.X=1699.523mil|Location1.Y=2613.407mil|Location2.Y=2624.657mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U3-2(18.5mm,42.125mm) on Top Layer And Pad U3-1(17.55mm,42.125mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1725.674mil|Location2.X=1736.924mil|Location1.Y=2613.407mil|Location2.Y=2624.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1725.674mil|Location2.X=1736.924mil|Location1.Y=2613.407mil|Location2.Y=2624.657mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U3-3(19.45mm,42.125mm) on Top Layer And Pad U3-2(18.5mm,42.125mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1725.674mil|Location2.X=1736.924mil|Location1.Y=2721.674mil|Location2.Y=2732.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1725.674mil|Location2.X=1736.924mil|Location1.Y=2721.674mil|Location2.Y=2732.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U3-5(18.5mm,44.875mm) on Top Layer And Pad U3-4(19.45mm,44.875mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1688.273mil|Location2.X=1699.523mil|Location1.Y=2721.674mil|Location2.Y=2732.924mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1688.273mil|Location2.X=1699.523mil|Location1.Y=2721.674mil|Location2.Y=2732.924mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.147mm &lt; 0.254mm) Between Pad U3-6(17.55mm,44.875mm) on Top Layer And Pad U3-5(18.5mm,44.875mm) on Top Layer [Top Solder] Mask Sliver [0.147mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1454.678mil|Location2.X=1465.928mil|Location1.Y=1264.06mil|Location2.Y=1275.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1454.678mil|Location2.X=1465.928mil|Location1.Y=1264.06mil|Location2.Y=1275.31mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.119mm &lt; 0.254mm) Between Pad U1-2(12.803mm,7mm) on Top Layer And Pad U1-1(12.803mm,7.5mm) on Top Layer [Top Solder] Mask Sliver [0.119mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1454.678mil|Location2.X=1465.928mil|Location1.Y=1244.375mil|Location2.Y=1255.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1454.678mil|Location2.X=1465.928mil|Location1.Y=1244.375mil|Location2.Y=1255.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.119mm &lt; 0.254mm) Between Pad U1-3(12.803mm,6.5mm) on Top Layer And Pad U1-2(12.803mm,7mm) on Top Layer [Top Solder] Mask Sliver [0.119mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1454.678mil|Location2.X=1465.928mil|Location1.Y=1224.69mil|Location2.Y=1235.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1454.678mil|Location2.X=1465.928mil|Location1.Y=1224.69mil|Location2.Y=1235.94mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.119mm &lt; 0.254mm) Between Pad U1-4(12.803mm,6mm) on Top Layer And Pad U1-3(12.803mm,6.5mm) on Top Layer [Top Solder] Mask Sliver [0.119mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1454.678mil|Location2.X=1465.928mil|Location1.Y=1205.005mil|Location2.Y=1216.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1454.678mil|Location2.X=1465.928mil|Location1.Y=1205.005mil|Location2.Y=1216.255mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.119mm &lt; 0.254mm) Between Pad U1-5(12.803mm,5.5mm) on Top Layer And Pad U1-4(12.803mm,6mm) on Top Layer [Top Solder] Mask Sliver [0.119mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1627.678mil|Location2.X=1638.928mil|Location1.Y=1205.005mil|Location2.Y=1216.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1627.678mil|Location2.X=1638.928mil|Location1.Y=1205.005mil|Location2.Y=1216.255mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.119mm &lt; 0.254mm) Between Pad U1-7(17.197mm,6mm) on Top Layer And Pad U1-6(17.197mm,5.5mm) on Top Layer [Top Solder] Mask Sliver [0.119mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1627.678mil|Location2.X=1638.928mil|Location1.Y=1224.69mil|Location2.Y=1235.94mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1627.678mil|Location2.X=1638.928mil|Location1.Y=1224.69mil|Location2.Y=1235.94mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.119mm &lt; 0.254mm) Between Pad U1-8(17.197mm,6.5mm) on Top Layer And Pad U1-7(17.197mm,6mm) on Top Layer [Top Solder] Mask Sliver [0.119mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1627.678mil|Location2.X=1638.928mil|Location1.Y=1244.375mil|Location2.Y=1255.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1627.678mil|Location2.X=1638.928mil|Location1.Y=1244.375mil|Location2.Y=1255.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.119mm &lt; 0.254mm) Between Pad U1-9(17.197mm,7mm) on Top Layer And Pad U1-8(17.197mm,6.5mm) on Top Layer [Top Solder] Mask Sliver [0.119mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1627.678mil|Location2.X=1638.928mil|Location1.Y=1264.06mil|Location2.Y=1275.31mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1627.678mil|Location2.X=1638.928mil|Location1.Y=1264.06mil|Location2.Y=1275.31mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.119mm &lt; 0.254mm) Between Pad U1-10(17.197mm,7.5mm) on Top Layer And Pad U1-9(17.197mm,7mm) on Top Layer [Top Solder] Mask Sliver [0.119mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDPBBAAY4RQ1NBOXTE4VQKMNHOOLQMMFXZQD5TS5PWWLZGHQQ5JCQN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.485mil|Location2.X=3309.735mil|Location1.Y=2222.722mil|Location2.Y=2233.972mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.485mil|Location2.X=3309.735mil|Location1.Y=2222.722mil|Location2.Y=2233.972mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Track (59.075mm,31.314mm)(59.075mm,31.6mm) on Top Overlay And Pad D3-2(58.45mm,32mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.485mil|Location2.X=3309.735mil|Location1.Y=2254.218mil|Location2.Y=2265.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.485mil|Location2.X=3309.735mil|Location1.Y=2254.218mil|Location2.Y=2265.468mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Track (59.075mm,32.375mm)(59.075mm,32.711mm) on Top Overlay And Pad D3-2(58.45mm,32mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3264.06mil|Location2.X=3275.31mil|Location1.Y=2218.595mil|Location2.Y=2229.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3264.06mil|Location2.X=3275.31mil|Location1.Y=2218.595mil|Location2.Y=2229.845mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.21mm &lt; 0.254mm) Between Track (56.278mm,31.314mm)(59.075mm,31.314mm) on Top Overlay And Pad D3-2(58.45mm,32mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.21mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3264.06mil|Location2.X=3275.31mil|Location1.Y=2258.843mil|Location2.Y=2270.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3264.06mil|Location2.X=3275.31mil|Location1.Y=2258.843mil|Location2.Y=2270.093mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.235mm &lt; 0.254mm) Between Track (56.278mm,32.711mm)(59.075mm,32.711mm) on Top Overlay And Pad D3-2(58.45mm,32mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.235mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3201.143mil|Location2.X=3212.393mil|Location1.Y=2222.722mil|Location2.Y=2233.972mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3201.143mil|Location2.X=3212.393mil|Location1.Y=2222.722mil|Location2.Y=2233.972mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.196mm &lt; 0.254mm) Between Track (56.278mm,31.314mm)(56.278mm,32.711mm) on Top Overlay And Pad D3-1(56.95mm,32mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.196mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.005mil|Location2.X=3216.255mil|Location1.Y=2218.595mil|Location2.Y=2229.845mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.005mil|Location2.X=3216.255mil|Location1.Y=2218.595mil|Location2.Y=2229.845mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.21mm &lt; 0.254mm) Between Track (56.278mm,31.314mm)(59.075mm,31.314mm) on Top Overlay And Pad D3-1(56.95mm,32mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.21mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.005mil|Location2.X=3216.255mil|Location1.Y=2258.843mil|Location2.Y=2270.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.005mil|Location2.X=3216.255mil|Location1.Y=2258.843mil|Location2.Y=2270.093mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.235mm &lt; 0.254mm) Between Track (56.278mm,32.711mm)(59.075mm,32.711mm) on Top Overlay And Pad D3-1(56.95mm,32mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.235mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.485mil|Location2.X=3309.735mil|Location1.Y=2766.028mil|Location2.Y=2777.278mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.485mil|Location2.X=3309.735mil|Location1.Y=2766.028mil|Location2.Y=2777.278mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Track (59.075mm,45.375mm)(59.075mm,45.711mm) on Top Overlay And Pad D2-2(58.45mm,45mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.485mil|Location2.X=3309.735mil|Location1.Y=2734.532mil|Location2.Y=2745.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3298.485mil|Location2.X=3309.735mil|Location1.Y=2734.532mil|Location2.Y=2745.782mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.149mm &lt; 0.254mm) Between Track (59.075mm,44.314mm)(59.075mm,44.6mm) on Top Overlay And Pad D2-2(58.45mm,45mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.149mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3264.06mil|Location2.X=3275.31mil|Location1.Y=2730.407mil|Location2.Y=2741.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3264.06mil|Location2.X=3275.31mil|Location1.Y=2730.407mil|Location2.Y=2741.657mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.21mm &lt; 0.254mm) Between Track (56.278mm,44.314mm)(59.075mm,44.314mm) on Top Overlay And Pad D2-2(58.45mm,45mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.21mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3264.06mil|Location2.X=3275.31mil|Location1.Y=2770.655mil|Location2.Y=2781.905mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3264.06mil|Location2.X=3275.31mil|Location1.Y=2770.655mil|Location2.Y=2781.905mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.235mm &lt; 0.254mm) Between Track (56.278mm,45.711mm)(59.075mm,45.711mm) on Top Overlay And Pad D2-2(58.45mm,45mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.235mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3201.143mil|Location2.X=3212.393mil|Location1.Y=2734.532mil|Location2.Y=2745.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3201.143mil|Location2.X=3212.393mil|Location1.Y=2734.532mil|Location2.Y=2745.782mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.196mm &lt; 0.254mm) Between Track (56.278mm,44.314mm)(56.278mm,45.711mm) on Top Overlay And Pad D2-1(56.95mm,45mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.196mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.005mil|Location2.X=3216.255mil|Location1.Y=2730.407mil|Location2.Y=2741.657mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.005mil|Location2.X=3216.255mil|Location1.Y=2730.407mil|Location2.Y=2741.657mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.21mm &lt; 0.254mm) Between Track (56.278mm,44.314mm)(59.075mm,44.314mm) on Top Overlay And Pad D2-1(56.95mm,45mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.21mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.005mil|Location2.X=3216.255mil|Location1.Y=2770.655mil|Location2.Y=2781.905mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.005mil|Location2.X=3216.255mil|Location1.Y=2770.655mil|Location2.Y=2781.905mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.235mm &lt; 0.254mm) Between Track (56.278mm,45.711mm)(59.075mm,45.711mm) on Top Overlay And Pad D2-1(56.95mm,45mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.235mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1508.178mil|Location2.X=1519.428mil|Location1.Y=1185.097mil|Location2.Y=1196.347mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1508.178mil|Location2.X=1519.428mil|Location1.Y=1185.097mil|Location2.Y=1196.347mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.181mm &lt; 0.254mm) Between Track (13.451mm,5.078mm)(16.549mm,5.078mm) on Top Overlay And Pad U1-5(12.803mm,5.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.181mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1628.678mil|Location2.X=1639.928mil|Location1.Y=1185.097mil|Location2.Y=1196.347mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=D:\Bluetooth_Speaker_Power_Supply\Power_Supply.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1628.678mil|Location2.X=1639.928mil|Location1.Y=1185.097mil|Location2.Y=1196.347mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.181mm &lt; 0.254mm) Between Track (13.451mm,5.078mm)(16.549mm,5.078mm) on Top Overlay And Pad U1-6(17.197mm,5.5mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.181mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

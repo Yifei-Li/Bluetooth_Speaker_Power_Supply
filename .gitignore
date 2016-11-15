@@ -1,0 +1,5 @@
+# don't carry the history zips around - this might cause conflicts but w/e
+/History/
+/Project Logs for Bluetooth_Speaker_Power_Supply/
+/CAD/
+*.zip
