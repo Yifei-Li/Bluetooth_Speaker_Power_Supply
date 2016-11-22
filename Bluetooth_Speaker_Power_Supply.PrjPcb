@@ -140,8 +140,94 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=
 
+[Document7]
+DocumentPath=Schematics\Voltage Monitor.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=ACVWERXU
+
+[Document8]
+DocumentPath=Bluetooth_Speaker_Power_Supply.OutJob
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [GeneratedDocument1]
 DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Design Rule Check - Power_Supply.html
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\NC Drill\Power_Supply.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\NC Drill\Power_Supply.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.REP
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\Gerber\Power_Supply.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for Bluetooth_Speaker_Power_Supply\NC Drill\Power_Supply.TXT
 DItemRevisionGUID=
 
 [Configuration1]
